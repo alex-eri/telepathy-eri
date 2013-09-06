@@ -21,5 +21,3 @@ https://oauth.vk.com/authorize?client_id=2692017&scope=friends,messages,offline&
 
 в ответ получишь редирект, а в адресе будет #access_token=[многобуков]&expires_in=0&user_id=136195746
 между access_token= и &expires_in - копируешь код и указываешь параметром Token к учетке.
-
-This file was modified by PyCharm 2.7.3 for binding GitHub repository
