@@ -1,0 +1,25 @@
+сделать исполнимым telepathy-eri.py 
+проверить интерпретатор в первой строчке - должен запускаться через 
+питон 2.7
+
+в org.freedesktop.Telepathy.ConnectionManager.eri.service указать полный 
+путь до telepathy-eri.py
+
+скопировать org.freedesktop.Telepathy.ConnectionManager.eri.service в 
+/usr/share/dbus-1/services/org.freedesktop.Telepathy.ConnectionManager.eri.service
+
+скопировать eri.manager в /usr/share/telepathy/managers/eri.manager
+
+у этих файлов поставить права и владельца такие же как у подобных в тех папках.
+
+убить mission-control (опционально): killall mission-control-5
+
+теперь должен появиться в учетных записях протокол vk
+
+перейди по ссылке
+https://oauth.vk.com/authorize?client_id=2692017&scope=friends,messages,offline&redirect_uri=https://oauth.vk.com/blank.html&v=5.0&response_type=token
+
+в ответ получишь редирект, а в адресе будет #access_token=[многобуков]&expires_in=0&user_id=136195746
+между access_token= и &expires_in - копируешь код и указываешь параметром Token к учетке.
+
+This file was modified by PyCharm 2.7.3 for binding GitHub repository
