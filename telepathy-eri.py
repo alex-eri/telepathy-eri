@@ -1,0 +1,78 @@
+#!/usr/bin/python
+
+# IMPORTANT! makes asynchronous dbus things work
+from dbus.mainloop.glib import DBusGMainLoop, threads_init
+DBusGMainLoop(set_as_default=True)
+
+# get the mainloop before creating the ConnectionManager
+# so that dbus (telepathy) can use it
+import gobject
+
+
+from tp import eriConnectionManager
+
+import logging
+import logging.handlers
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger('telepathy-eri')
+
+from tp import constants
+
+
+import telepathy
+import telepathy.server
+
+
+class Debug(telepathy.server.Debug):
+    """Butterfly debug interface
+
+    Implements the org.freedesktop.Telepathy.Debug interface"""
+
+    def __init__(self, conn_manager):
+        telepathy.server.Debug.__init__(self, conn_manager)
+
+    def get_record_name(self, record):
+        name = record.name
+        if name.startswith("Eri."):
+            domain, category = name.split('.', 1)
+        else:
+            domain = "Eri"
+            category = name
+        name = domain.lower() + "/" + category.lower()
+        return name
+
+
+if __name__ == "__main__":
+
+    # get telepathy to start listening for our dbus stuff via the mainloop
+    try: # change process name for killall
+       import ctypes
+       libc = ctypes.CDLL('libc.so.6')
+       libc.prctl(15, 'telepathy-'+constants.PROGRAM, 0, 0, 0)
+    except Exception, e:
+       logger.warning('Unable to set processName: %s" % e')
+
+
+    threads_init()
+    gobject.threads_init()
+    mainloop = gobject.MainLoop()
+    logger.debug('cm')
+    manager=eriConnectionManager()
+    # debug = Debug(manager)
+    logger.debug('run')
+
+    import signal
+    from utils.decorators import async
+
+    @async
+    def quit(*args):
+        global manager, mainloop
+        manager.quit()
+        mainloop.quit()
+
+    signal.signal(signal.SIGINT,quit)
+
+    # and ... Go!
+    mainloop.run()
+

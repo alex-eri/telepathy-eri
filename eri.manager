@@ -1,0 +1,7 @@
+[ConnectionManager]
+Name = eri
+BusName = org.freedesktop.Telepathy.ConnectionManager.eri
+ObjectPath = /org/freedesktop/Telepathy/ConnectionManager/eri
+
+[Protocol vk]
+param-token = s required secret

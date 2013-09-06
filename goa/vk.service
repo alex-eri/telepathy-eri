@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<service id="vk-chat">
+  <type>IM</type>
+  <name>Vk.com Chat</name>
+  <description>Chat with your cool friends</description>
+  <icon>vk</icon>
+  <provider>vk</provider>
+  <translations>eri-i18n</translations>
+
+  <!-- default settings (account settings can override these) -->
+  <template>
+    <!--
+      Any static setting required by the application can be
+      stored here.
+    -->
+    <group name="telepathy">
+      <setting name="manager">eri</setting>
+      <setting name="protocol">vk</setting>
+    </group>
+
+    <!--
+      A service can use a different authentication method,
+      mechanism and parameters than those used during the
+      account creation phase.
+    -->
+    <group name="auth">
+      <setting name="method">oauth2</setting>
+      <!--
+      <setting name="mechanism">user_agent</setting>
+      <group name="oauth2/user_agent">
+        <setting name="ClientId">ABCDEclient.ID</setting>
+      </group>
+      -->
+    </group>
+  </template>
+</service>
