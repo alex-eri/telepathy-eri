@@ -42,7 +42,7 @@ class vkProtocol(
         telepathy.CONNECTION_INTERFACE_CONTACT_LIST,
         telepathy.CONNECTION_INTERFACE_CONTACTS,
         telepathy.CONNECTION_INTERFACE_REQUESTS,
-        # telepathy.CONNECTION_INTERFACE_SIMPLE_PRESENCE,
+        telepathy.CONNECTION_INTERFACE_SIMPLE_PRESENCE,
     ]
 
     _requestable_channel_classes = [

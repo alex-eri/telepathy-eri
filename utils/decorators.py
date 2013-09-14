@@ -26,7 +26,7 @@ def async(func):
     return new_function
 
 
-import logging
+import logging,traceback
 logger = logging.getLogger('Eri.Decorators')
 
 
@@ -40,6 +40,8 @@ def loggit(logger=logger,lm='lambda'):
                 ret = f(*args,**kwargs)
             except Exception,e:
                 logger.error('{}: {}'.format(e.__class__.__name__, e.message))
+                logger.error(traceback.format_exc())
+
                 raise e
             logger.debug(repr(ret))
             return ret
