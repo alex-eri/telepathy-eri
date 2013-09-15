@@ -121,7 +121,9 @@ class vkConnection(Connection,
             logger.error(e.message)
         self.StatusChanged(telepathy.CONNECTION_STATUS_CONNECTED,
             telepathy.CONNECTION_STATUS_REASON_REQUESTED)
+
         if self._download_at_connection:
+        # if True:
             self.Download()
 
     def Disconnect(self):
