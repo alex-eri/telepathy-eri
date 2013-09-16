@@ -219,6 +219,8 @@ class vkTextChannel(
             if id in self._pending_IM_messages:
                 del self._pending_IM_messages[id]
 
+        self._conn.markAsRead(ids,self._handle.name)
+
         ChannelTypeText.AcknowledgePendingMessages(self, ids)
         self.PendingMessagesRemoved(ids)
 

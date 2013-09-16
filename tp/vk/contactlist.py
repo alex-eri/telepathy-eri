@@ -51,10 +51,11 @@ class VkContactList(
     def Download(self):
         self.ContactListStateChanged(telepathy.CONTACT_LIST_STATE_WAITING)
         try:
-            friends = self.Api.friends.get(fields='nickname,screen_name,photo_50,online').get('items',[])
-            self._friends = ContactList(self.Api.friends,fields='nickname,screen_name,photo_50,online',items=friends)
-            self.contact_list.cl.update(self._friends.cl)
+            friendlists = self.Api.friends.get(fields='nickname,screen_name,photo_50,online').get('items',[])
+            friends = ContactList(self.Api.friends,fields='nickname,screen_name,photo_50,online',items=friendlists)
+            self.contact_list.cl.update(friends.cl)
             self._groups = self.Api.friends.getLists()
+            self._friends = friends.cl.values()
 
         except vkcom.APIError,e:
             self.ContactListStateChanged(telepathy.CONTACT_LIST_STATE_FAILURE)
@@ -67,7 +68,7 @@ class VkContactList(
     def GetContactAttributes(self, handles, Interfaces, Hold):
         ret = super(VkContactList,self).GetContactAttributes(handles,Interfaces,Hold)
         for handle_id in ret.keys():
-            if ret[handle_id][telepathy.CONN_INTERFACE + '/contact-id'] in self._friends.cl.values():
+            if ret[handle_id][telepathy.CONN_INTERFACE + '/contact-id'] in self._friends:
                 ret[handle_id][telepathy.CONNECTION_INTERFACE_CONTACT_LIST+'/subscribe'] = telepathy.SUBSCRIPTION_STATE_YES
                 ret[handle_id][telepathy.CONNECTION_INTERFACE_CONTACT_LIST+'/publish'] = telepathy.SUBSCRIPTION_STATE_YES
             else:
@@ -83,7 +84,7 @@ class VkContactList(
 
         logger.info(repr(self._groups))
 
-        for contact in self._friends.cl.values():
+        for contact in self._friends:
             handle = self.ensure_contact_handle(contact)
             handles.append(int(handle))
             groups[int(handle)] = contact.get('lists',[])
@@ -98,3 +99,17 @@ class VkContactList(
 
     def _get_groups(self):
         return [lst['name'] for lst in self._groups]+['vk']
+
+    @loggit(logger)
+    def friend_offline(self,uid,reason=1):
+        handle = self.ensure_contact_handle(uid)
+        handle.contact['online'] = 0
+        presence = self.GetPresences([handle.id])[handle.id]
+        # self.PresencesChanged(presence)
+
+    @loggit(logger)
+    def friend_online(self,uid):
+        handle = self.ensure_contact_handle(uid)
+        handle.contact['online'] = 1
+        presence = self.GetPresences([handle.id])[handle.id]
+        # self.PresencesChanged(presence)

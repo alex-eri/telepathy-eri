@@ -96,8 +96,11 @@ class vkInfo(ConnectionInterfaceContactInfo):
                 contact['screen_name']=u'id{}'.format(handle.name)
             url = dbus.Struct(('url', [], [u'http://vk.com/{screen_name}'.format(**contact)]),signature='sasas')
             info.append(url)
-            nickname = dbus.Struct(('nickname', [], [u'{nickname}'.format(**contact)]),signature='sasas')
-            info.append(nickname)
+            if 'nickname' in contact.keys():
+                nickname = dbus.Struct(('nickname', [], [u'{nickname}'.format(**contact)]),signature='sasas')
+                info.append(nickname)
+            else:
+                logger.info(repr(contact))
             nickname = dbus.Struct(('nickname', [], [u'{screen_name}'.format(**contact)]),signature='sasas')
             info.append(nickname)
             ret[handle_id] = info
@@ -249,9 +252,9 @@ class vkContacts(
         for handle in handles.values():
 
             if handle.contact.get('online'):
-                status = [2,telepathy.CONNECTION_PRESENCE_STATUS_AVAILABLE,handle.contact.get('status','')]
+                status = [2,telepathy.CONNECTION_PRESENCE_STATUS_AVAILABLE,unicode(handle.contact.get('status',u''))]
             else:
-                status = [1,telepathy.CONNECTION_PRESENCE_STATUS_OFFLINE,handle.contact.get('status','')]
+                status = [1,telepathy.CONNECTION_PRESENCE_STATUS_OFFLINE,unicode(handle.contact.get('status',u''))]
 
             Presences[handle.id] = dbus.Struct(status,signature='uss')
 

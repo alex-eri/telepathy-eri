@@ -135,6 +135,10 @@ class VkMessenger(object):
                 self.outgoing_message(update[1],*message)
             else:
                 self.incoming_message(update[1],*message)
+        elif code == 9:
+            self.friend_offline(-update[1])
+        elif code == 8:
+            self.friend_online(-update[1])
 
 
     def incoming_message(self,message_id,uid,timestamp,title,text,attachments=None):
@@ -153,6 +157,9 @@ class VkMessenger(object):
         message=message.encode('utf-8')
         resp = self.Api.messages.send(user_id=user_id,domain=domain,message=message)
         return resp
+
+    def markAsRead(self,message_ids,user_id):
+        self.Api.messages.markAsRead(message_ids=message_ids,user_id=user_id)
 
 
 if __name__ == "__main__" :
