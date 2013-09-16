@@ -702,7 +702,7 @@ class ConnectionInterfaceContacts(_ConnectionInterfaceContacts, DBusProperties):
         CONN_INTERFACE : 'contact-id',
         CONN_INTERFACE_ALIASING : 'alias',
         CONNECTION_INTERFACE_SIMPLE_PRESENCE : 'presence',
-        CONN_INTERFACE_ALIASING : 'alias',
+        # CONN_INTERFACE_ALIASING : 'alias',
         CONN_INTERFACE_AVATARS : 'token',
         CONNECTION_INTERFACE_CONTACT_INFO : 'info'
     }

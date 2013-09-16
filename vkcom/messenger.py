@@ -31,7 +31,7 @@ class ContactList(object):
         for i in items:
             uid = i.get('id')
             if uid:
-                self.cl[uid] = i
+                self.cl[str(uid)] = i
 
     @loggit(logger)
     def __getitem__(self, item):

@@ -20,7 +20,7 @@ GROUP = 'vk.com'
 from capabilities import vkCapabilities
 
 class vkAvatars(telepathy.server.ConnectionInterfaceAvatars):
-    _supported_avatar_mime_types = ['image/jpeg']
+    _supported_avatar_mime_types = ['image/jpeg', 'image/gif']
     _minimum_avatar_height = 50
     _minimum_avatar_width = 50
     _recommended_avatar_height = 100
@@ -47,7 +47,10 @@ class vkAvatars(telepathy.server.ConnectionInterfaceAvatars):
 
             with open(filename, 'r') as f:
                 avatar = dbus.ByteArray(f.read())
-                self.AvatarRetrieved(handle_id, base64.urlsafe_b64encode(url).strip('='), avatar, 'image/jpeg')
+                mime = 'image/jpeg'
+                if filename.split('.')[-1] == 'gif':
+                    mime = 'image/gif'
+                self.AvatarRetrieved(handle_id, base64.urlsafe_b64encode(url).strip('='), avatar, mime)
 
     @loggit(logger)
     def GetKnownAvatarTokens(self, Contacts):
@@ -101,6 +104,7 @@ class vkContacts(
         ConnectionInterfaceSimplePresence.__init__(self)
         vkCapabilities.__init__(self)
         vkAvatars.__init__(self)
+        VkContactList.__init__(self)
         # ConnectionInterfaceContactGroups.__init__(self)
         # ConnectionInterfaceContactInfo.__init__(self)
         # ConnectionInterfaceContactList.__init__(self)
@@ -213,3 +217,8 @@ class vkContacts(
         gobject.idle_add(self.PresencesChanged,Presences)
         return Presences
 
+    def SetPresence(self, Status, Status_Message):
+        pass
+
+    def UpdateCapabilities(self, Handler_Capabilities):
+        pass
