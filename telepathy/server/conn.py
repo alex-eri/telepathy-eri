@@ -832,8 +832,8 @@ class ConnectionInterfaceContactInfo(_ConnectionInterfaceContactInfo, DBusProper
         self._implement_property_get(CONNECTION_INTERFACE_CONTACT_INFO, {
             'ContactInfoFlags': lambda: dbus.UInt32(self._get_contact_info_flags()),
             'SupportedFields': lambda: dbus.Array(
-                map(lambda field: dbus.Struct((field[0],dbus.Array(field[1], signature='s'), field[3], field[4]), signature='sasuu'), self._get_supported_fields()), 
-                signature='sasuu'),
+                map(lambda field: dbus.Struct((field[0],dbus.Array(field[1], signature='s'), field[2], field[3]), signature='sasuu'), self._get_supported_fields()),
+                signature='(sasuu)'),
         })
 
     def _get_contact_info_flags(self):

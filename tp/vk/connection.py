@@ -41,6 +41,8 @@ class vkConnection(Connection,
 
         VkMessenger.__init__(self, CLIENT_ID, CLIENT_SECRET, CLIENT_SCOPE)
         self.login(token=parameters['token'])
+
+        self.alias_is_screen_name = parameters.get('alias is screen_name')
         self.contact_list = ContactList(self.Api.users,fields='nickname,screen_name,photo_50,online')
 
         contact = self.contact_list.get(None)

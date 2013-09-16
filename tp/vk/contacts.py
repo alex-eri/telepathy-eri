@@ -8,7 +8,7 @@ import telepathy.errors
 from tp.vk.contactlist import VkContactList
 import dbus.service
 import dbus
-from telepathy.server import ConnectionInterfaceSimplePresence, ConnectionInterfaceContacts, ChannelTypeContactList, ChannelInterfaceGroup, ConnectionInterfaceAliasing
+from telepathy.server import ConnectionInterfaceSimplePresence, ConnectionInterfaceContacts, ChannelTypeContactList, ChannelInterfaceGroup, ConnectionInterfaceAliasing, ConnectionInterfaceContactInfo
 import telepathy
 import logging
 from utils.decorators import loggit
@@ -31,11 +31,12 @@ class vkAvatars(telepathy.server.ConnectionInterfaceAvatars):
 
     @loggit(logger)
     def RequestAvatars(self, Contacts):
-        gobject.timeout_add(0, self.load_avatars, Contacts)
+        for handle_id in Contacts:
+            gobject.idle_add(self.load_avatars, handle_id)
 
     @loggit(logger)
-    def load_avatars(self, Contacts):
-        for handle_id in Contacts:
+    def load_avatars(self, handle_id):
+
             handle = self.handle(telepathy.HANDLE_TYPE_CONTACT, handle_id)
             filename = handle.contact.get('photo_cache')
             url = handle.contact.get('photo_50', '')
@@ -70,20 +71,56 @@ class vkAvatars(telepathy.server.ConnectionInterfaceAvatars):
         return dbus.Array(self.GetKnownAvatarTokens(Contacts).values(),signature='s')
 
 
+#from telepathy.server.conn import _ConnectionInterfaceContactInfo,DBusProperties,CONNECTION_INTERFACE_CONTACT_INFO
+
+class vkInfo(ConnectionInterfaceContactInfo):
+
+    _contact_info_flags = 1
+
+    _supported_fields = [
+        ('fn',[],telepathy.CONTACT_INFO_FIELD_FLAG_OVERWRITTEN_BY_NICKNAME,1),
+        ('url',[],telepathy.CONTACT_INFO_FIELD_FLAG_OVERWRITTEN_BY_NICKNAME,2),
+        ('nickname',[],telepathy.CONTACT_INFO_FIELD_FLAG_OVERWRITTEN_BY_NICKNAME,2)
+    ]
+
+    @loggit(logger)
+    def GetContactInfo(self, Contacts):
+        ret = dbus.Dictionary(signature='ua(sasas)')
+        for handle_id in Contacts:
+            info = dbus.Array(signature='(sasas)')
+            handle = self.handle(telepathy.HANDLE_TYPE_CONTACT, handle_id)
+            contact =  self.get_contact_info(handle.name)
+            fn = dbus.Struct(('fn',[],[u'{first_name} {last_name}'.format(**contact)]),signature='sasas')
+            info.append(fn)
+            if 'screen_name' not in contact.keys():
+                contact['screen_name']=u'id{}'.format(handle.name)
+            url = dbus.Struct(('url', [], [u'http://vk.com/{screen_name}'.format(**contact)]),signature='sasas')
+            info.append(url)
+            nickname = dbus.Struct(('nickname', [], [u'{nickname}'.format(**contact)]),signature='sasas')
+            info.append(nickname)
+            nickname = dbus.Struct(('nickname', [], [u'{screen_name}'.format(**contact)]),signature='sasas')
+            info.append(nickname)
+            ret[handle_id] = info
+        return ret
+
+
+
+
 class vkContacts(
     vkCapabilities,
     VkContactList,
     ConnectionInterfaceContacts,
     ConnectionInterfaceAliasing,
     ConnectionInterfaceSimplePresence,
-    vkAvatars
+    vkAvatars,
+    vkInfo
 ):
     _contact_attribute_interfaces = {
         telepathy.CONN_INTERFACE: 'contact-id',
         telepathy.CONN_INTERFACE_ALIASING: 'alias',
         telepathy.CONNECTION_INTERFACE_SIMPLE_PRESENCE : 'presence',
         telepathy.CONN_INTERFACE_AVATARS : 'token',
-        # telepathy.CONNECTION_INTERFACE_CONTACT_INFO : 'info'
+        telepathy.CONNECTION_INTERFACE_CONTACT_INFO : 'info'
         # telepathy.CONNECTION_INTERFACE_CAPABILITIES : 'caps',
         # telepathy.CONNECTION_INTERFACE_CONTACT_CAPABILITIES : 'capabilities'
     }
@@ -105,6 +142,7 @@ class vkContacts(
         vkCapabilities.__init__(self)
         vkAvatars.__init__(self)
         VkContactList.__init__(self)
+        vkInfo.__init__(self)
         # ConnectionInterfaceContactGroups.__init__(self)
         # ConnectionInterfaceContactInfo.__init__(self)
         # ConnectionInterfaceContactList.__init__(self)
@@ -155,16 +193,19 @@ class vkContacts(
         for handle_id in Contacts:
             handle = self.handle(telepathy.HANDLE_TYPE_CONTACT, handle_id)
             contact =  self.get_contact_info(handle.name)
-            aliases[handle_id] = dbus.String(contact.get('screen_name'))
+            if self.alias_is_screen_name:
+                alias = contact.get('screen_name')
+            else:
+                alias = u'{first_name} {last_name}'.format(**contact)
+            aliases[handle_id] = dbus.String(alias)
         return aliases
 
     @loggit(logger)
     def RequestAliases(self, Contacts):
         aliases = dbus.Array()
+        aliases_map = self.GetAliases(Contacts)
         for handle_id in Contacts:
-            handle = self.handle(telepathy.HANDLE_TYPE_CONTACT, handle_id)
-            contact =  self.get_contact_info(handle.name)
-            aliases.append(dbus.String(contact.get('screen_name')))
+            aliases.append(aliases_map.get(handle_id,''))
         return aliases
 
     @loggit(logger)

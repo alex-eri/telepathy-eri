@@ -13,13 +13,19 @@ class vkProtocol(
     _english_name = "Vk.com"
     _icon = "vk"
 
-    _secret_parameters = {
+    _secret_parameters = [
             'token'
-    }
+    ]
     _mandatory_parameters = {
             # 'account' : 's',
             'token' : 's'
             }
+    _parameter_defaults = {
+            'alias is screen_name': False
+    }
+    _optional_parameters = {
+            'alias is screen_name': 'b'
+    }
     _statuses = {
         telepathy.CONNECTION_PRESENCE_STATUS_AVAILABLE: (
             telepathy.CONNECTION_PRESENCE_TYPE_AVAILABLE,

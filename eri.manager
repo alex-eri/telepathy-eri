@@ -5,3 +5,4 @@ ObjectPath = /org/freedesktop/Telepathy/ConnectionManager/eri
 
 [Protocol vk]
 param-token = s required secret
+

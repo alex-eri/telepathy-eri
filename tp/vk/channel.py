@@ -1,4 +1,5 @@
 #!/usr/bin/python
+# coding:utf-8
 import weakref
 import gobject
 from tp.channel import EriChannel
@@ -67,7 +68,7 @@ class vkTextChannel(
         }
         body = {
             'content-type': 'text/plain',
-            'content': text
+            'content': text.replace('<br>','\n')
         }
         message = [headers, body]
         self.Sent(timestamp, message_type, text)
@@ -93,7 +94,7 @@ class vkTextChannel(
             photo_fields = [name[:-5] for name,value in attachments.items() if name[-5:]=='_type' and value == 'photo' ]
             # photos = [value for name,value in attachments.items() if name in photo_fields]
 
-            plain_text = text
+            plain_text = text.replace('<br>','\n')
 
             html = u'<p>{}</p>'.format(text)
 
@@ -126,7 +127,8 @@ class vkTextChannel(
                         html += u'<br/><img src="cid:photo{owner_id}_{id}" alt="photo{owner_id}_{id}"/>'.format(**photo)
 
                 except vkcom.APIError,e:
-                    att = u'\nAttachment Error: {}'.format(e.message)
+                    # att = u'\nAttachment Error: {}'.format(e.message)
+                    att = u'Есть вложения https://vk.com/im?sel={}'.format(uid)
                     plain_text += att
                     html += '<br/>' + att
 
