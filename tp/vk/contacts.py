@@ -215,14 +215,14 @@ class vkContacts(
     @dbus.service.method('org.freedesktop.Telepathy.Connection.Interface.Aliasing', in_signature='a{us}',
                          out_signature='')
     def SetAliases(self, Aliases):
-        changed = dbus.Array(signature='(us)')
-        for handle_id, alias in Aliases.items():
-            if handle_id == self._self_handle.get_id():
-                self._self_handle.contact['screen_name'] = alias
-                changed.append((handle_id, alias))
-        if changed:
-            self.AliasesChanged(changed)
-        else:
+        # changed = dbus.Array(signature='(us)')
+        # for handle_id, alias in Aliases.items():
+        #     if handle_id == self._self_handle.get_id():
+        #         self._self_handle.contact['screen_name'] = alias
+        #         changed.append((handle_id, alias))
+        # if changed:
+        #     self.AliasesChanged(changed)
+        # else:
             raise telepathy.errors.NotAvailable(repr(Aliases))
 
     @loggit(logger)
