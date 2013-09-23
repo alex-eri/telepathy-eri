@@ -17,6 +17,7 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+import traceback
 
 import dbus
 import dbus.service
@@ -602,6 +603,9 @@ class ConnectionInterfaceRequests(
 
     loggit()
     def _alter_properties(self, props):
+
+        traceback.format_exc()
+
         target_handle_type = props.get(CHANNEL_INTERFACE + '.TargetHandleType',
             HANDLE_TYPE_NONE)
         target_handle = props.get(CHANNEL_INTERFACE + '.TargetHandle', None)
