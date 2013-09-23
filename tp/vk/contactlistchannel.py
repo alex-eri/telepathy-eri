@@ -17,8 +17,6 @@ class vkContactChannel(ChannelTypeContactList,ChannelInterfaceGroup,EriChannel):
         ChannelTypeContactList.__init__(self,connection,manager,props,object_path)
         ChannelInterfaceGroup.__init__(self)
         EriChannel.__init__(self,connection,props)
-        self._conn.ensure_handle(telepathy.HANDLE_TYPE_LIST, 'subscribe')
-        self._conn.ensure_handle(telepathy.HANDLE_TYPE_LIST, 'publish')
 
         #self._object_path = object_path
 

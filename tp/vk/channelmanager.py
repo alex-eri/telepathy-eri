@@ -20,6 +20,10 @@ class vkChannelManager(ChannelManager):
         ChannelManager.__init__(self, conn)
         # ChannelManager magic for handling channels
         self.implement_channel_classes(telepathy.CHANNEL_TYPE_TEXT, self._get_text_channel )
+
+        self._conn.create_handle(telepathy.HANDLE_TYPE_LIST, 'subscribe')
+        self._conn.create_handle(telepathy.HANDLE_TYPE_LIST, 'publish')
+
         self.implement_channel_classes(telepathy.CHANNEL_TYPE_CONTACT_LIST, self._get_list_channel )
 
     @loggit(logger)
