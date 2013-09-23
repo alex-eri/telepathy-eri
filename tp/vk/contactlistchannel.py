@@ -18,6 +18,7 @@ class vkContactChannel(ChannelTypeContactList,ChannelInterfaceGroup,EriChannel):
         #self._object_path = object_path
 
     @property
+    @loggit(logger)
     def _members(self):
         handles = []#dbus.Array(signature='u')
         for contact in self._conn._friends:

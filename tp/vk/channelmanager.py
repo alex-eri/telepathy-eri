@@ -33,8 +33,18 @@ class vkChannelManager(ChannelManager):
 
     @loggit(logger)
     def _get_list_channel(self,props):
-        path = 'ContactList%d' % self.__list_channel_id
-        self.__list_channel_id +=1
-        return vkContactChannel(self._conn,self,props,object_path=path)
+
+        _, surpress_handler, handle = self._get_type_requested_handle(props)
+
+        if handle.get_type() == telepathy.HANDLE_TYPE_GROUP:
+            path = "RosterChannel/Group/%s" % handle.get_name()
+            raise telepathy.errors.NotImplemented
+
+        elif handle.get_name() == 'subscribe' or handle.get_name() == 'publish':
+            path = 'RosterChannel/List/%s' % props.get(telepathy.CHANNEL_INTERFACE + '.TargetID', )
+            channel = vkContactChannel(self._conn,self,props,object_path=path)
+        else:
+            raise telepathy.errors.NotImplemented
+        return channel
 
 

@@ -52,16 +52,20 @@ class vkProtocol(
     ]
 
     _requestable_channel_classes = [
-        (
-            {
-                telepathy.CHANNEL + '.ChannelType': dbus.String(telepathy.CHANNEL_TYPE_TEXT),
-                telepathy.CHANNEL + '.TargetHandleType': dbus.UInt32(telepathy.HANDLE_TYPE_CONTACT),
-            },
-            [
-                telepathy.CHANNEL + '.TargetHandle',
-                telepathy.CHANNEL + '.TargetID',
-            ]
-        ),
+        ({   telepathy.CHANNEL + '.ChannelType': dbus.String(telepathy.CHANNEL_TYPE_TEXT),
+             telepathy.CHANNEL + '.TargetHandleType': dbus.UInt32(telepathy.HANDLE_TYPE_CONTACT), },
+         [   telepathy.CHANNEL + '.TargetHandle',
+             telepathy.CHANNEL + '.TargetID',    ]),
+
+        # ({telepathy.CHANNEL_INTERFACE + '.ChannelType': dbus.String(telepathy.CHANNEL_TYPE_CONTACT_LIST),
+        #   telepathy.CHANNEL_INTERFACE + '.TargetHandleType': dbus.UInt32(telepathy.HANDLE_TYPE_GROUP)},
+        #  [telepathy.CHANNEL_INTERFACE + '.TargetHandle',
+        #   telepathy.CHANNEL_INTERFACE + '.TargetID']),
+
+        ({telepathy.CHANNEL_INTERFACE + '.ChannelType': dbus.String(telepathy.CHANNEL_TYPE_CONTACT_LIST),
+          telepathy.CHANNEL_INTERFACE + '.TargetHandleType': dbus.UInt32(telepathy.HANDLE_TYPE_LIST)},
+         [telepathy.CHANNEL_INTERFACE + '.TargetHandle',
+          telepathy.CHANNEL_INTERFACE + '.TargetID']),
     ]
 
     def __init__(self, connection_manager):
