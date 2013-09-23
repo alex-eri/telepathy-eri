@@ -21,10 +21,15 @@ class vkContactChannel(ChannelTypeContactList,ChannelInterfaceGroup,EriChannel):
     def _members(self):
         handles = []#dbus.Array(signature='u')
         for contact in self._conn._friends:
-            handle = self.ensure_contact_handle(contact)
+            handle = self._conn.ensure_contact_handle(contact)
             handles.append(int(handle))
         return handles
 
     @_members.setter
     def _members(self,value):
         pass
+
+
+    # def GetLocalPendingMembersWithInfo(self):
+    #     pass
+
