@@ -63,10 +63,10 @@ class VkContactList(
             self.ContactListStateChanged(telepathy.CONTACT_LIST_STATE_FAILURE)
             raise e
 
-        props = self._generate_props(telepathy.CHANNEL_TYPE_CONTACT_LIST,
-                self._self_handle, False, self._self_handle)
-
-        self._channel_manager.channel_for_props(props,signal=True)
+        # props = self._generate_props(telepathy.CHANNEL_TYPE_CONTACT_LIST,
+        #         self._self_handle, False, self._self_handle)
+        #
+        # self._channel_manager.channel_for_props(props,signal=True)
 
         gobject.idle_add(self._contacts_changed)
         self.ContactListStateChanged(telepathy.CONTACT_LIST_STATE_SUCCESS)
