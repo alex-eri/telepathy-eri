@@ -51,11 +51,15 @@ class vkConnection(Connection,
 
         # create a new channel manager and tell it we're it's connection
         self._channel_manager = vkChannelManager(self)
+
         Connection.__init__(self, PROTOCOL, self.account, PROGRAM)
         ConnectionInterfaceRequests.__init__(self)
         vkContacts.__init__(self)
 
         self._self_handle = self.ensure_contact_handle(contact)
+
+        self.create_handle(telepathy.HANDLE_TYPE_LIST, 'subscribe')
+        self.create_handle(telepathy.HANDLE_TYPE_LIST, 'publish')
         #     Handle(
         #     self.get_handle_id(), telepathy.HANDLE_TYPE_CONTACT,
         #     parameters['account'])

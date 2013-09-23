@@ -1,6 +1,12 @@
 import dbus
 from connection import vkConnection
 
+import logging
+from utils.decorators import loggit
+
+logger = logging.getLogger('Vk.Protocol')
+
+
 __author__ = 'eri'
 import telepathy
 class vkProtocol(
@@ -68,10 +74,11 @@ class vkProtocol(
           telepathy.CHANNEL_INTERFACE + '.TargetID']),
     ]
 
+    # @loggit(logger)
     def __init__(self, connection_manager):
         telepathy.server.Protocol.__init__(self, connection_manager, self._proto)
         telepathy.server.ProtocolInterfacePresence.__init__(self)
 
-
+    # @loggit(logger)
     def create_connection(self, connection_manager, parameters):
         return vkConnection(self, connection_manager, parameters)

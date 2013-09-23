@@ -1,3 +1,4 @@
+from utils.decorators import loggit
 from vk.protocol import vkProtocol
 
 __author__ = 'eri'
@@ -12,6 +13,7 @@ from constants import PROTOCOL, PROGRAM
 from vk.connection import vkConnection
 
 class eriConnectionManager(ConnectionManager):
+    # @loggit(logger)
     def __init__(self):
         ConnectionManager.__init__(self, PROGRAM)
         # use telepathy magic to provide required methods

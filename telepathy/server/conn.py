@@ -17,8 +17,6 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-import traceback,logging
-logger = logging.getLogger('telepathy/conn')
 
 import dbus
 import dbus.service
@@ -55,7 +53,6 @@ from telepathy.server.handle import Handle, NoneHandle
 from telepathy.server.properties import DBusProperties
 
 from telepathy._generated.Connection import Connection as _Connection
-from utils.decorators import loggit
 
 _BAD = re.compile(r'(?:^[0-9])|(?:[^A-Za-z0-9])')
 
@@ -602,11 +599,8 @@ class ConnectionInterfaceRequests(
 
             self.check_handle_type(target_handle_type)
 
-    loggit(logger)
+
     def _alter_properties(self, props):
-
-        logger.error(traceback.format_exc())
-
         target_handle_type = props.get(CHANNEL_INTERFACE + '.TargetHandleType',
             HANDLE_TYPE_NONE)
         target_handle = props.get(CHANNEL_INTERFACE + '.TargetHandle', None)
