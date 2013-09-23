@@ -12,6 +12,7 @@ from utils.decorators import loggit
 
 logger = logging.getLogger('Eri.Vk/list')
 
+import channelmanager
 
 class VkContactList(
     ConnectionInterfaceContactList,
@@ -38,13 +39,14 @@ class VkContactList(
         identifiers = dbus.Dictionary(signature='us')
         removals = dbus.Dictionary(signature='us')
 
-        for contact in self._friends.cl.values():
+        for contact in self._friends:
             handle = self.ensure_contact_handle(contact)
             changes[handle] = dbus.Struct((True, True, ''), signature='uus')
             identifiers[handle] = handle.name
 
         self.ContactsChangedWithID(changes, identifiers, removals)
         self.ContactsChanged(changes, dbus.Array([], signature='u')) #deprecated
+
 
 
     @loggit(logger)
@@ -60,6 +62,11 @@ class VkContactList(
         except vkcom.APIError,e:
             self.ContactListStateChanged(telepathy.CONTACT_LIST_STATE_FAILURE)
             raise e
+
+        # props = self._generate_props(telepathy.CHANNEL_TYPE_CONTACT_LIST,
+        #         self._self_handle, False, self._self_handle)
+        #
+
 
         gobject.idle_add(self._contacts_changed)
         self.ContactListStateChanged(telepathy.CONTACT_LIST_STATE_SUCCESS)
