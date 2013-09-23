@@ -17,7 +17,8 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-import traceback
+import traceback,logging
+logger = logging.getLogger('telepathy/conn')
 
 import dbus
 import dbus.service
@@ -601,10 +602,10 @@ class ConnectionInterfaceRequests(
 
             self.check_handle_type(target_handle_type)
 
-    loggit()
+    loggit(logger)
     def _alter_properties(self, props):
 
-        traceback.format_exc()
+        logger.error(traceback.format_exc())
 
         target_handle_type = props.get(CHANNEL_INTERFACE + '.TargetHandleType',
             HANDLE_TYPE_NONE)
