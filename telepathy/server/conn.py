@@ -53,6 +53,7 @@ from telepathy.server.handle import Handle, NoneHandle
 from telepathy.server.properties import DBusProperties
 
 from telepathy._generated.Connection import Connection as _Connection
+from utils.decorators import loggit
 
 _BAD = re.compile(r'(?:^[0-9])|(?:[^A-Za-z0-9])')
 
@@ -599,7 +600,7 @@ class ConnectionInterfaceRequests(
 
             self.check_handle_type(target_handle_type)
 
-
+    loggit()
     def _alter_properties(self, props):
         target_handle_type = props.get(CHANNEL_INTERFACE + '.TargetHandleType',
             HANDLE_TYPE_NONE)
