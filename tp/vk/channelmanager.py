@@ -13,6 +13,7 @@ logger = logging.getLogger('Eri.Vk/channelmanager')
 
 # a Channel Manager with our required channels built in
 class vkChannelManager(ChannelManager):
+    @loggit(logger)
     def __init__(self, conn):
         self.__text_channel_id = 0
         self.__list_channel_id = 0
@@ -21,8 +22,8 @@ class vkChannelManager(ChannelManager):
         # ChannelManager magic for handling channels
         self.implement_channel_classes(telepathy.CHANNEL_TYPE_TEXT, self._get_text_channel )
 
-        self._conn.create_handle(telepathy.HANDLE_TYPE_LIST, 'subscribe')
-        self._conn.create_handle(telepathy.HANDLE_TYPE_LIST, 'publish')
+        conn.create_handle(telepathy.HANDLE_TYPE_LIST, 'subscribe')
+        conn.create_handle(telepathy.HANDLE_TYPE_LIST, 'publish')
 
         self.implement_channel_classes(telepathy.CHANNEL_TYPE_CONTACT_LIST, self._get_list_channel )
 
