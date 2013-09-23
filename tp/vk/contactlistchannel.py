@@ -25,4 +25,6 @@ class vkContactChannel(ChannelTypeContactList,ChannelInterfaceGroup,EriChannel):
             handles.append(int(handle))
         return handles
 
-
+    @_members.setter
+    def _members(self,value):
+        pass
