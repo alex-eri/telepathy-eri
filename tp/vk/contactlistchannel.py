@@ -11,9 +11,11 @@ logger = logging.getLogger('Eri.Vk/list_channel')
 class vkContactChannel(ChannelTypeContactList,ChannelInterfaceGroup,EriChannel):
 
     def __init__(self,connection,manager,props,object_path=None):
-        EriChannel.__init__(self,connection,props)
+
         ChannelTypeContactList.__init__(self,connection,manager,props,object_path)
         ChannelInterfaceGroup.__init__(self)
+        EriChannel.__init__(self,connection,props)
+        self._object_path = object_path
 
     @property
     def _members(self):
