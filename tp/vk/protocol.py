@@ -20,17 +20,20 @@ class vkProtocol(
     _icon = "vk"
 
     _secret_parameters = [
-            'token'
+        'password'
+        'token'
     ]
     _mandatory_parameters = {
-            # 'account' : 's',
-            'token' : 's'
+            'account' : 's',
+            'password': 's'
+            # 'token' : 's'
             }
     _parameter_defaults = {
             'alias is screen_name': False
     }
     _optional_parameters = {
-            'alias is screen_name': 'b'
+            'alias is screen_name': 'b',
+            'token':'s'
     }
     _statuses = {
         telepathy.CONNECTION_PRESENCE_STATUS_AVAILABLE: (
@@ -79,6 +82,6 @@ class vkProtocol(
         telepathy.server.Protocol.__init__(self, connection_manager, self._proto)
         telepathy.server.ProtocolInterfacePresence.__init__(self)
 
-    # @loggit(logger)
+    @loggit(logger)
     def create_connection(self, connection_manager, parameters):
         return vkConnection(self, connection_manager, parameters)

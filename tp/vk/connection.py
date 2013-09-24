@@ -38,9 +38,13 @@ class vkConnection(Connection,
     def __init__(self,protocol,manager, parameters):
         # self.account = parameters['account'].encode('utf-8')
         self._manager = weakref.proxy(manager)
-
+        logger.debug('VkMessenger')
         VkMessenger.__init__(self, CLIENT_ID, CLIENT_SECRET, CLIENT_SCOPE)
-        self.login(token=parameters['token'])
+        logger.debug('login')
+        if parameters.get('token') and parameters['token'] != 'password':
+            self.login(token=parameters['token'])
+        else:
+            self.login(username=parameters['account'],password=parameters['password'])
 
         self.alias_is_screen_name = parameters.get('alias is screen_name')
         self.contact_list = ContactList(self.Api.users,fields='nickname,screen_name,photo_50,online')

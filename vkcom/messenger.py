@@ -12,7 +12,7 @@ try:
 except ImportError:
     import json
 
-CLIENT_ID = '2692017'
+CLIENT_ID = '3827733'
 CLIENT_SCOPE = 'friends,messages,offline'
 CLIENT_SECRET = None
 WAIT = 28
@@ -108,7 +108,7 @@ class VkMessenger(object):
                     self.update(update)
             else:
                 conn.close()
-                self.disconnect()
+                #self.disconnect()
                 break
         # except Exception,e:
         #     logger.error(e.message)

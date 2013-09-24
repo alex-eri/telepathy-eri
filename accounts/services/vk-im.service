@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service id="vk-im">
+  <type>IM</type>
+  <name>Vk</name>
+  <icon>vk</icon>
+  <provider>vk</provider>
+  <translations>account-plugins</translations>
+
+  
+  <template>
+    <group name="telepathy">
+      <setting type="b" name="mc-readonly-params">true</setting>
+      <setting name="manager">eri</setting>
+      <setting name="protocol">vk</setting>
+    </group>
+
+  </template>
+
+</service>

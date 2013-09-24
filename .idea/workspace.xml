@@ -2,30 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e81496a6-0949-453d-a68a-744271fe6482" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tp/vk/channelmanager.py" afterPath="$PROJECT_DIR$/tp/vk/channelmanager.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/telepathy/server/conn.py" afterPath="$PROJECT_DIR$/telepathy/server/conn.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/icons/vk.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accounts/services/vk-im.service" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/accounts/providers/vk.provider" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/goa/vk.provider" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/goa/vk.service" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README" afterPath="$PROJECT_DIR$/README" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vkcom/api.py" afterPath="$PROJECT_DIR$/vkcom/api.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tp/vk/connection.py" afterPath="$PROJECT_DIR$/tp/vk/connection.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tp/connmgr.py" afterPath="$PROJECT_DIR$/tp/connmgr.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tp/constants.py" afterPath="$PROJECT_DIR$/tp/constants.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eri.manager" afterPath="$PROJECT_DIR$/eri.manager" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vkcom/messenger.py" afterPath="$PROJECT_DIR$/vkcom/messenger.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/org.freedesktop.Telepathy.ConnectionManager.eri.service" afterPath="$PROJECT_DIR$/org.freedesktop.Telepathy.ConnectionManager.eri.service" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tp/vk/protocol.py" afterPath="$PROJECT_DIR$/tp/vk/protocol.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="telepathy-eri.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1379969966501" ignored="false" />
+    <file path="/Dummy.txt" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1380060321940" ignored="false" />
     <file path="/contacts.py" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1379319070636" ignored="false" />
     <file path="/decorators.py" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1379111343681" ignored="false" />
     <file path="/contactlist.py" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1379952453568" ignored="false" />
-    <file path="/connection.py" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1379305070805" ignored="false" />
-    <file path="/README" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1379275787179" ignored="false" />
-    <file path="/messenger.py" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1379317928893" ignored="false" />
+    <file path="/connection.py" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1380056322004" ignored="false" />
+    <file path="/README" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1380059472783" ignored="false" />
+    <file path="/messenger.py" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1379976067556" ignored="false" />
     <file path="/channel.py" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1379317105906" ignored="false" />
-    <file path="/protocol.py" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1379970558318" ignored="false" />
+    <file path="/protocol.py" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1380056755100" ignored="false" />
     <file path="/contactlistchannel.py" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1379969203448" ignored="false" />
     <file path="/channelmanager.py" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1379966095493" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1379960501188" ignored="false" />
     <file path="/a.dummy" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1379967823642" ignored="false" />
     <file path="/conn.py" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1379968590775" ignored="false" />
     <file path="/connmgr.py" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1379970731602" ignored="false" />
+    <file path="/var/lxc/ubuntu-raring/usr/share/accounts/services/vk-im.service" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1380056277002" ignored="false" />
+    <file path="/vk-im.service" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1380058508364" ignored="false" />
+    <file path="/api.py" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1380054918192" ignored="false" />
+    <file path="/var/lxc/ubuntu-raring/usr/share/accounts/providers/vk.provider" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1380055989861" ignored="false" />
+    <file path="/vk.provider" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1380055989861" ignored="false" />
+    <file path="/eri.manager" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1380060025621" ignored="false" />
+    <file path="/org.freedesktop.Telepathy.ConnectionManager.eri.service" changelist="e81496a6-0949-453d-a68a-744271fe6482" time="1380060145831" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,21 +63,35 @@
       <file leaf-file-name="protocol.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tp/vk/protocol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="4" selection-start="2733" selection-end="2735" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state line="19" column="14" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="conn.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/telepathy/server/conn.py">
+      <file leaf-file-name="README" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="601" column="0" selection-start="24422" selection-end="24422" vertical-scroll-proportion="-15.8">
-              <folding>
-                <element signature="e#930#941#0" expanded="true" />
-              </folding>
+            <state line="37" column="0" selection-start="1602" selection-end="1602" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="org.freedesktop.Telepathy.ConnectionManager.eri.service" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/org.freedesktop.Telepathy.ConnectionManager.eri.service">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="0" selection-start="141" selection-end="141" vertical-scroll-proportion="0.05597015">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vk-im.service" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/accounts/services/vk-im.service">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="9" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -71,73 +100,42 @@
         <entry file="file://$PROJECT_DIR$/tp/connmgr.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="15" column="14" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="connmgr.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/telepathy/server/connmgr.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="0" selection-start="3964" selection-end="3964" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="service.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///usr/lib/python2.7/site-packages/dbus/service.py">
+      <file leaf-file-name="api.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vkcom/api.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="785" column="0" selection-start="33516" selection-end="33516" vertical-scroll-proportion="0.0">
+            <state line="177" column="0" selection-start="5290" selection-end="5290" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="decorators.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/decorators.py">
+      <file leaf-file-name="constants.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tp/constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="0" selection-start="1047" selection-end="1047" vertical-scroll-proportion="0.0">
+            <state line="5" column="16" selection-start="68" selection-end="75" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="telepathy-eri.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/telepathy-eri.py">
+      <file leaf-file-name="protocol.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/telepathy/server/protocol.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="0" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.0">
+            <state line="177" column="8" selection-start="6915" selection-end="6915" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contactlistchannel.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tp/vk/contactlistchannel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="590" selection-end="590" vertical-scroll-proportion="-8.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="channelmanager.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tp/vk/channelmanager.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="703" selection-end="703" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="connection.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="connection.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tp/vk/connection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="26" selection-start="2240" selection-end="2240" vertical-scroll-proportion="0.46563193">
+            <state line="43" column="62" selection-start="1607" selection-end="1607" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -161,27 +159,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/utils/decorators.py" />
-        <option value="$PROJECT_DIR$/README" />
-        <option value="$PROJECT_DIR$/eri.manager" />
-        <option value="$PROJECT_DIR$/tp/vk/channel.py" />
-        <option value="$PROJECT_DIR$/vkcom/messenger.py" />
         <option value="$PROJECT_DIR$/tp/vk/contactlist.py" />
         <option value="$PROJECT_DIR$/tp/vk/contacts.py" />
         <option value="$PROJECT_DIR$/../telepathy-butterfly/butterfly/channel/__init__.py" />
         <option value="$PROJECT_DIR$/tp/vk/contactlistchannel.py" />
         <option value="$PROJECT_DIR$/telepathy/server/conn.py" />
         <option value="$PROJECT_DIR$/tp/connmgr.py" />
-        <option value="$PROJECT_DIR$/tp/vk/protocol.py" />
         <option value="$PROJECT_DIR$/tp/vk/channelmanager.py" />
+        <option value="$PROJECT_DIR$/tp/constants.py" />
+        <option value="$PROJECT_DIR$/vkcom/messenger.py" />
+        <option value="$PROJECT_DIR$/vkcom/api.py" />
         <option value="$PROJECT_DIR$/tp/vk/connection.py" />
+        <option value="$PROJECT_DIR$/tp/vk/protocol.py" />
+        <option value="$PROJECT_DIR$/accounts/services/vk-im.service" />
+        <option value="$PROJECT_DIR$/README" />
+        <option value="$PROJECT_DIR$/eri.manager" />
+        <option value="$PROJECT_DIR$/org.freedesktop.Telepathy.ConnectionManager.eri.service" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1279" />
+    <option name="x" value="-1" />
+    <option name="y" value="27" />
     <option name="width" value="1282" />
-    <option name="height" value="1025" />
+    <option name="height" value="998" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -228,116 +229,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="telepathy-eri" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="telepathy-eri" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vkcom" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="telepathy-eri" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="telepathy-eri" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="telepathy-eri" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="telepathy-eri" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="telepathy-eri" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="telepathy-eri" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vk" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="telepathy-eri" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="telepathy-eri" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="channel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="telepathy-eri" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="telepathy-eri" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="telepathy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="telepathy-eri" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="telepathy-eri" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="telepathy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -345,7 +236,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../telepathy-butterfly" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../VkcomAPI/vkcom/auth.py" />
   </component>
   <component name="PublishConfig">
     <servers>
@@ -414,7 +305,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="telepathy-eri" />
+      <module name="" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="CLASS_NAME" value="" />
@@ -569,31 +460,35 @@
       <created>1379969968541</created>
       <updated>1379969968541</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="contactlist">
+      <created>1379971182772</created>
+      <updated>1379971182772</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1279" y="0" width="1282" height="1025" extended-state="6" />
+    <frame x="-1" y="27" width="1282" height="998" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32915717" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3997722" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Mongo Runner" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32915717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24797407" sideWeight="0.56947607" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.43052393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21555915" sideWeight="0.57109284" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39840183" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Mongo Runner" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4280822" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32915717" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32915717" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -663,130 +558,104 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../telepathy-butterfly/butterfly/channel_manager.py">
+    <entry file="file:///usr/lib/python2.7/site-packages/dbus/service.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="29" selection-start="1413" selection-end="1413" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="785" column="0" selection-start="33516" selection-end="33516" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../telepathy-butterfly/butterfly/handle.py">
+    <entry file="file://$PROJECT_DIR$/tp/vk/channelmanager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="4" selection-start="1062" selection-end="1062" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="23" column="0" selection-start="703" selection-end="703" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../telepathy-butterfly/butterfly/channel/__init__.py">
+    <entry file="file://$PROJECT_DIR$/utils/decorators.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="1006" selection-end="1006" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#827#841#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../telepathy-butterfly/butterfly/connection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="228" column="21" selection-start="8530" selection-end="8543" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#888#902#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="44" column="0" selection-start="1403" selection-end="1403" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tp/vk/contactlist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="264" selection-end="305" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="112" column="18" selection-start="4143" selection-end="4143" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tp/vk/contacts.py">
+    <entry file="file://$PROJECT_DIR$/vkcom/messenger.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="174" column="76" selection-start="6286" selection-end="6348" vertical-scroll-proportion="-26.0">
-          <folding />
-        </state>
+        <state line="71" column="20" selection-start="2065" selection-end="2065" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tp/vk/contactlistchannel.py">
+    <entry file="file://$PROJECT_DIR$/../VkcomAPI/vkcom/auth.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="590" selection-end="590" vertical-scroll-proportion="-8.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/telepathy/server/conn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="601" column="0" selection-start="24422" selection-end="24422" vertical-scroll-proportion="-15.8">
-          <folding>
-            <element signature="e#930#941#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/telepathy-eri.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="0" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/telepathy/server/connmgr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="0" selection-start="3964" selection-end="3964" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="23" column="16" selection-start="466" selection-end="694" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tp/connmgr.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="14" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/decorators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="1047" selection-end="1047" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python2.7/site-packages/dbus/service.py">
+    <entry file="file://$PROJECT_DIR$/tp/constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="785" column="0" selection-start="33516" selection-end="33516" vertical-scroll-proportion="0.0">
+        <state line="5" column="16" selection-start="68" selection-end="75" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/telepathy/server/protocol.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="177" column="8" selection-start="6915" selection-end="6915" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vkcom/api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="177" column="0" selection-start="5290" selection-end="5290" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tp/vk/connection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="62" selection-start="1607" selection-end="1607" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/accounts/services/vk-im.service">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="9" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tp/vk/protocol.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="4" selection-start="2733" selection-end="2735" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state line="19" column="14" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tp/vk/channelmanager.py">
+    <entry file="file://$PROJECT_DIR$/README">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="703" selection-end="703" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state line="37" column="0" selection-start="1602" selection-end="1602" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tp/vk/connection.py">
+    <entry file="file://$PROJECT_DIR$/eri.manager">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="26" selection-start="2240" selection-end="2240" vertical-scroll-proportion="0.46563193">
+        <state line="5" column="0" selection-start="163" selection-end="163" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/org.freedesktop.Telepathy.ConnectionManager.eri.service">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="141" selection-end="141" vertical-scroll-proportion="0.05597015">
           <folding />
         </state>
       </provider>

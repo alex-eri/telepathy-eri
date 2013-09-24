@@ -2,7 +2,9 @@
 Name = eri
 BusName = org.freedesktop.Telepathy.ConnectionManager.eri
 ObjectPath = /org/freedesktop/Telepathy/ConnectionManager/eri
+Interfaces=
 
 [Protocol vk]
-param-token = s required secret
-
+param-account = s required
+param-password = s required secret
+param-token = s secret

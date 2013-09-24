@@ -173,11 +173,55 @@ class API(Method):
         parameters = urllib.urlencode(parameters)
         return 'https://oauth.vk.com/authorize?' + parameters
 
+    def _mechanize(self,username, password, **kwargs):
+
+        import mechanize
+        parameters = {
+            'client_id': self.client_id,
+            'scope': self.scope,
+            'redirect_uri': "http://oauth.vk.com/blank.html",
+            'display': 'wap',
+            'response_type': "token"
+        }
+
+        parameters = urllib.urlencode(parameters)
+        login_uri = 'https://api.vk.com/oauth/authorize?' + parameters
+        br = mechanize.Browser()
+        br.set_handle_equiv(True)
+        br.set_handle_redirect(True)
+        br.set_handle_referer(True)
+        br.set_handle_robots(False)
+        br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
+        br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
+
+        br.open(login_uri)
+        br.select_form(predicate=lambda f: 'method' in f.attrs and f.attrs['method'] == "post")
+        br['email']=username
+        br['pass']=password
+        resp = br.submit()
+        uri = resp.geturl()
+        if uri.find('access_token') > 1:
+            return self._link(uri)
+        else :
+            #'запрос разрешений'
+            br.select_form(predicate=lambda f: 'method' in f.attrs and f.attrs['method'] == "post")
+            resp = br.submit()
+            uri = resp.geturl()
+            if uri.find('access_token') > 1:
+                return self._link(uri)
+
+        logger.error(uri)
+        pass
+
     def login(self, link=None, access_token=None, user_id=None, expires_in=None, username=None, password=None, **kwargs):
 
         if username and password:
-            logger.info('Direct Auth')
-            return self._direct_auth(username=username, password=username, **kwargs)
+            try:
+                logger.info('Direct Auth')
+                self._direct_auth(username=username, password=password, **kwargs)
+            except:
+                logger.info('Mechnize Auth')
+                self._mechanize(username=username, password=password, **kwargs)
 
         if access_token:
             logger.info('Have Token')

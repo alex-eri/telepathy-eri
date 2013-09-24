@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<provider id="vk">
-  <name>Vk.com</name>
-  <description>Vk to your desktop</description>
-  <translations>eri-i18n</translations>
-  <icon>vk</icon>
-  <domains>.*vk\.com</domains>
-</provider>
