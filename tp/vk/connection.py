@@ -100,18 +100,18 @@ class vkConnection(Connection,
         return props
 
     def outgoing_message(self,message_id,uid,timestamp,title,text,attachments=None):
-            logger.info('out'+str((message_id,uid,timestamp,title,text,attachments)))
+            logger.debug('out'+str((message_id,uid,timestamp,title,text,attachments)))
 
             handle = self.ensure_contact_handle(uid)
             props = self._generate_props(telepathy.CHANNEL_TYPE_TEXT,
-                handle, False, self._self_handle)
+                handle, False, handle)
 
             channel = self._channel_manager.channel_for_props(props,signal=True)
             channel.message_sent(message_id,uid,timestamp,title,text,attachments)
 
 
     def incoming_message(self,message_id,uid,timestamp,title,text,attachments=None):
-            logger.info('received'+str((message_id,uid,timestamp,title,text,attachments)))
+            logger.debug('received'+str((message_id,uid,timestamp,title,text,attachments)))
 
             handle = self.ensure_contact_handle(uid)
             props = self._generate_props(telepathy.CHANNEL_TYPE_TEXT,
@@ -148,8 +148,7 @@ class vkConnection(Connection,
     @loggit(logger)
     @dbus.service.method(telepathy.CONNECTION, in_signature='suub',
         out_signature='o', async_callbacks=('_success', '_error'))
-    def RequestChannel(self, type, handle_type, handle_id, suppress_handler,
-            _success, _error):
+    def RequestChannel(self, type, handle_type, handle_id, suppress_handler, _success, _error):
         self.check_connected()
         channel_manager = self._channel_manager
 

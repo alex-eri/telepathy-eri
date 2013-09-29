@@ -9,16 +9,23 @@ DBusGMainLoop(set_as_default=True)
 import gobject
 
 
-from tp import eriConnectionManager
 
-import logging
-import logging.handlers
 
-logging.basicConfig(level=logging.DEBUG)
+import logging,os
+#import logging.handlers
+
+loglevel = int(os.environ.get('ERIDEBUG',logging.WARNING))
+
+logging.basicConfig(level=loglevel,
+                    format='%(asctime)s %(name)-14s %(levelname)-8s %(message)s',
+                    datefmt='%m-%d %H:%M'
+)
+
 logger = logging.getLogger('telepathy-eri')
 
-from tp import constants
 
+from tp import constants
+from tp import eriConnectionManager
 
 import telepathy
 import telepathy.server
@@ -59,7 +66,7 @@ if __name__ == "__main__":
     mainloop = gobject.MainLoop()
     logger.debug('cm')
     manager=eriConnectionManager()
-    # debug = Debug(manager)
+    debug = Debug(manager)
     logger.debug('run')
 
     import signal

@@ -61,11 +61,11 @@ class Method(object):
     https=None
     method=[]
 
-    def _call(self, method, **kwargs):
+    def call(self, method, **kwargs):
         """
         https://api.vkontakte.ru/method/METHOD_NAME?PARAMETERS&access_token=ACCESS_TOKEN
         """
-        logger.debug(method)
+        logger.info(method)
         if not method:
             raise NameError('method is not provided')
 
@@ -76,7 +76,9 @@ class Method(object):
         parameters.update(kwargs)
 
         parameters = dict((k,v) for k,v in parameters.items() if v)
+
         logger.debug(repr(parameters))
+
         lists = dict((k,','.join(map(str,v))) for k,v in parameters.items() if type(v) == list)
         parameters.update(lists)
 
@@ -94,7 +96,7 @@ class Method(object):
         return data.get('response')
 
     def __call__(self, *args, **kwargs):
-        return self._call('.'.join(self.method), **kwargs)
+        return self.call('.'.join(self.method), **kwargs)
 
     def __getattr__(self,name):
        cp = Method()

@@ -1,5 +1,9 @@
-сделать исполнимым telepathy-eri.py 
-проверить интерпретатор в первой строчке - должен запускаться через 
+зависимости:
+python-mechanize (для питон2)
+python2-lxml
+
+сделать исполнимым telepathy-eri.py
+проверить интерпретатор в первой строчке - должен запускаться через
 питон 2.7
 
 в org.freedesktop.Telepathy.ConnectionManager.eri.service указать полный 

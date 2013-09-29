@@ -15,6 +15,7 @@ import telepathy
 import logging
 logger = logging.getLogger('Eri.Vk/channel')
 
+from utils.text import striphtml
 
 import dbus
 import dbus.service
@@ -56,9 +57,10 @@ class vkTextChannel(
         logger.debug('init4')
 
 
+
     @loggit(logger)
     def GetPendingMessageContent(self, Message_ID, Parts):
-        return self._pending_messages2[Message_ID]
+        return self._pending_IM_messages[Message_ID]
 
     def message_sent(self,message_id,uid,timestamp,title,text,attachments):
         message_type = telepathy.CHANNEL_TEXT_MESSAGE_TYPE_NORMAL
@@ -68,7 +70,7 @@ class vkTextChannel(
         }
         body = {
             'content-type': 'text/plain',
-            'content': text.replace('<br>','\n')
+            'content': striphtml(text)
         }
         message = [headers, body]
         self.Sent(timestamp, message_type, text)
@@ -89,20 +91,19 @@ class vkTextChannel(
                    dbus.String('message-type') : dbus.UInt32(telepathy.CHANNEL_TEXT_MESSAGE_TYPE_NORMAL)
                   }, signature='sv')
         body = [headers]
+
+        plain_text = striphtml(text)
+        html = u'<p>{}</p>'.format(text)
+
         if attachments:
 
             photo_fields = [name[:-5] for name,value in attachments.items() if name[-5:]=='_type' and value == 'photo' ]
             # photos = [value for name,value in attachments.items() if name in photo_fields]
 
-            plain_text = text.replace('<br>','\n')
-
-            html = u'<p>{}</p>'.format(text)
-
             photos = [attachments.get(k) for k in photo_fields if attachments.get(k)]
             if photos:
                 try:
                     photos = self._conn.Api.photos.getById(photos=photos,photo_sizes=1)
-
 
                     for photo in photos:
                         logger.info(repr(photo))
@@ -128,30 +129,46 @@ class vkTextChannel(
 
                 except vkcom.APIError,e:
                     # att = u'\nAttachment Error: {}'.format(e.message)
-                    att = u'Есть вложения https://vk.com/im?sel={}'.format(uid)
+                    att = u'Есть вложения, смотри https://vk.com/im?sel={}'.format(uid)
                     plain_text += att
                     html += '<br/>' + att
 
-            body.append( dbus.Dictionary({
-                    dbus.String('alternative'): dbus.String('text'),
-                    dbus.String('content-type'): dbus.String('text/html'),
-                    dbus.String('content'): dbus.String(html)
-                   }, signature='sv')
-            )
+        #    body.append( dbus.Dictionary({
+        #            dbus.String('alternative'): dbus.String('text'),
+        #            dbus.String('content-type'): dbus.String('text/html'),
+        #            dbus.String('content'): dbus.String(html)
+        #           }, signature='sv')
+        #    )
+        #
+        #    body.append( dbus.Dictionary({
+        #            dbus.String('alternative'): dbus.String('text'),
+        #            dbus.String('content-type'): dbus.String('text/plain'),
+        #            dbus.String('content'): dbus.String(plain_text)
+        #           }, signature='sv')
+        #    )
+        #
+        #else:
+        #    body.append( dbus.Dictionary({
+        #            dbus.String('content-type'): dbus.String('text/plain'),
+        #            dbus.String('content'): dbus.String(text)
+        #           }, signature='sv')
+        #    )
 
-            body.append( dbus.Dictionary({
-                    dbus.String('alternative'): dbus.String('text'),
-                    dbus.String('content-type'): dbus.String('text/plain'),
-                    dbus.String('content'): dbus.String(plain_text)
-                   }, signature='sv')
-            )
 
-        else:
-            body.append( dbus.Dictionary({
-                    dbus.String('content-type'): dbus.String('text/plain'),
-                    dbus.String('content'): dbus.String(text)
-                   }, signature='sv')
-            )
+        body.append( dbus.Dictionary({
+                dbus.String('alternative'): dbus.String('text'),
+                dbus.String('content-type'): dbus.String('text/html'),
+                dbus.String('content'): dbus.String(html)
+               }, signature='sv')
+        )
+
+        body.append( dbus.Dictionary({
+                dbus.String('alternative'): dbus.String('text'),
+                dbus.String('content-type'): dbus.String('text/plain'),
+                dbus.String('content'): dbus.String(plain_text)
+               }, signature='sv')
+        )
+
         message = dbus.Array(body, signature='a{sv}')
 
         self.MessageReceived(message)
@@ -177,6 +194,8 @@ class vkTextChannel(
         if message_type != telepathy.CHANNEL_TEXT_MESSAGE_TYPE_NORMAL:
                 raise telepathy.NotImplemented("Unhandled message type")
         text = None
+
+        #TODO html
         for part in message:
             if part.get("content-type", None) ==  "text/plain":
                 text = part['content']
@@ -219,9 +238,9 @@ class vkTextChannel(
             if id in self._pending_IM_messages:
                 del self._pending_IM_messages[id]
 
-        self._conn.markAsRead(ids,self._handle.name)
-
         ChannelTypeText.AcknowledgePendingMessages(self, ids)
+
+        self._conn.markAsRead(ids,self._handle.name)
         self.PendingMessagesRemoved(ids)
 
     @loggit(logger)

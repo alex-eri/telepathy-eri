@@ -68,9 +68,11 @@ class VkMessenger(object):
     def __init__(self,CLIENT_ID=CLIENT_ID, CLIENT_SECRET=CLIENT_SECRET, CLIENT_SCOPE=CLIENT_SCOPE):
         self.Api = vkcom.api.API(CLIENT_ID, CLIENT_SECRET, CLIENT_SCOPE)
 
+    #@loggit(logger)
     def login(self,username=None,password=None,token=None):
         self.Api.login(access_token=token,username=username,password=password)
 
+    @loggit(logger)
     def connect(self):
         lp = self.Api.messages.getLongPollServer()
         server = lp.pop('server')
@@ -100,7 +102,7 @@ class VkMessenger(object):
                 # data = json.loads(text)
                 data = json.load(response)
                 conn.close()
-                logger.debug(repr(data))
+                logger.info(repr(data))
                 if data.get('failed'):
                     break
                 lp['ts']=data.get('ts',lp['ts'])

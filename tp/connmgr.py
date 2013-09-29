@@ -3,7 +3,7 @@ from vk.protocol import vkProtocol
 
 __author__ = 'eri'
 import logging
-logger = logging.getLogger('Eri.ConnectionManager')
+logger = logging.getLogger('Eri.CM')
 
 
 # create a telepathy ConnectionManager for 'cave'

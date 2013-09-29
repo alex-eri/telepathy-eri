@@ -58,7 +58,8 @@ class vkAvatars(telepathy.server.ConnectionInterfaceAvatars):
         res = dbus.Dictionary(signature='us')
         for handle_id in Contacts:
             handle = self.handle(telepathy.HANDLE_TYPE_CONTACT, handle_id)
-            url = handle.contact.get('photo_50')
+            contact = self.get_contact_info(handle.name)
+            url = contact.get('photo_50')
             if url:
                 res[int(handle_id)] = base64.urlsafe_b64encode(url).strip('=')
             else:
@@ -87,8 +88,13 @@ class vkInfo(ConnectionInterfaceContactInfo):
     def GetContactInfo(self, Contacts):
         ret = dbus.Dictionary(signature='ua(sasas)')
         for handle_id in Contacts:
+            ret[handle_id] = self.RequestContactInfo(handle_id)
+        return ret
+
+    @loggit(logger)
+    def RequestContactInfo(self, Contact):
             info = dbus.Array(signature='(sasas)')
-            handle = self.handle(telepathy.HANDLE_TYPE_CONTACT, handle_id)
+            handle = self.handle(telepathy.HANDLE_TYPE_CONTACT, Contact)
             contact =  self.get_contact_info(handle.name)
             fn = dbus.Struct(('fn',[],[u'{first_name} {last_name}'.format(**contact)]),signature='sasas')
             info.append(fn)
@@ -103,11 +109,15 @@ class vkInfo(ConnectionInterfaceContactInfo):
                 logger.info(repr(contact))
             nickname = dbus.Struct(('nickname', [], [u'{screen_name}'.format(**contact)]),signature='sasas')
             info.append(nickname)
-            ret[handle_id] = info
-        return ret
+            return info
 
+    def get_info(self,Contact):
+        self.ContactInfoChanged(Contact,self.RequestContactInfo(Contact))
 
-
+    @loggit(logger)
+    def RefreshContactInfo(self, Contacts):
+        for Contact in Contacts:
+            gobject.idle_add(self.get_info,Contact)
 
 class vkContacts(
     vkCapabilities,

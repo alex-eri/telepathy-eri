@@ -1,4 +1,5 @@
 import urllib
+import time
 import telepathy
 from utils.decorators import loggit
 
@@ -24,11 +25,28 @@ class vkChannelManager(ChannelManager):
 
         self.implement_channel_classes(telepathy.CHANNEL_TYPE_CONTACT_LIST, self._get_list_channel )
 
+    #def channel_for_props(self, props, signal=True, **args):
+    #    channel = self.existing_channel(props)
+    #    """Return an existing channel with theses properties if it already
+    #    exists, otherwhise return a new one"""
+    #    if channel:
+    #        return channel
+    #    else:
+    #        chan = self.create_channel_for_props(props, signal, **args)
+    #        time.sleep(1)
+    #        return chan
+
+
     @loggit(logger)
     def _get_text_channel(self, props):
         # make up a name for the channel
-        path = "TextChannel%d" % self.__text_channel_id
         self.__text_channel_id += 1
+
+        _, surpress_handler, handle = self._get_type_requested_handle(props)
+
+        name =  handle.name or "Channel%d" % self.__text_channel_id
+        path = u"Text/{}".format(name)
+
         return vkTextChannel(self._conn, self, props,#)
             object_path=path)
 
