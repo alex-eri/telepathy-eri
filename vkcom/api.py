@@ -83,7 +83,7 @@ class Method(object):
         parameters.update(lists)
 
         parameters = urllib.urlencode(parameters)
-        conn = httplib.HTTPSConnection("api.vkontakte.ru")
+        conn = httplib.HTTPSConnection("api.vk.com")
         conn.request("POST", "/method/" + method , parameters)
         response = conn.getresponse()
         # data = response.read()
