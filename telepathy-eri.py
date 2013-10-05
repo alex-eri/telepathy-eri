@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 # IMPORTANT! makes asynchronous dbus things work
 from dbus.mainloop.glib import DBusGMainLoop, threads_init
