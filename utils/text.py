@@ -15,7 +15,7 @@ try:
             dom = lxml.html.fromstring(t)
             t = dom.text_content()
         except lxml.etree.XMLSyntaxError as e:
-            logger.warning(e.message)
+            logger.warning(repr(e.message))
             pass
 
         return t
