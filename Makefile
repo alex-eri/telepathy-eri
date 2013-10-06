@@ -52,7 +52,7 @@ $(service_DATA): $(service_in_files)
 	@sed -e "s|\@libexecdir\@|$(libexecdir)|" $< > $@
 
 install:
-	$(INSTALL)    -m755 $(exec_DATA)       $(DESTDIR)$(LIBEXECDIR)/telepathy-eri
+	$(INSTALL)    -m755 $(exec_DATA)       $(DESTDIR)$(libexecdir)/telepathy-eri
 	$(INSTALL)    -m644 $(service_DATA)    $(DESTDIR)$(DBUS_SERVICES_DIR)/org.freedesktop.Telepathy.ConnectionManager.eri.service
 	$(INSTALL)    -m644 $(manager_DATA)    $(DESTDIR)$(MANAGERS_DIR)/eri.manager
 # installing req
@@ -82,7 +82,7 @@ clean:
 	@git submodule deinit -f .
 
 uninstall:
-	$(RM)               $(DESTDIR)$(LIBEXECDIR)/telepathy-eri
+	$(RM)               $(DESTDIR)$(libexecdir)/telepathy-eri
 	$(RM)               $(DESTDIR)$(DBUS_SERVICES_DIR)/org.freedesktop.Telepathy.ConnectionManager.eri.service
 	$(RM)               $(DESTDIR)$(DESTDIR)$(MANAGERS_DIR)/eri.manager
 	$(RM)               $(DESTDIR)$(datadir)/telepathy-eri/
