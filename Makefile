@@ -1,10 +1,11 @@
 SHELL := /bin/bash
 
 prefix = /usr
-libexecdir = $(prefix)/libexec
-datadir = $(prefix)/share
-DBUS_SERVICES_DIR = $(datadir)/dbus-1/services
-MANAGERS_DIR = $(datadir)/telepathy/managers
+LIBEXECDIR ?= $(prefix)/lib/telepathy-eri
+DATADIR ?= $(prefix)/share/telepathy-eri
+
+DBUS_SERVICES_DIR ?= $(prefix)/share/dbus-1/services
+MANAGERS_DIR ?= $(prefix)/share/telepathy/managers
 
 INSTALL = install -D -p
 RM = rm -r -f
@@ -46,35 +47,32 @@ submodule:
             popd"
 
 $(exec_DATA): $(exec_in_files)
-	@sed -e "s|\@datadir\@|$(datadir)|" $< > $@
+	@sed -e "s|\@DATADIR\@|$(DATADIR)|" $< > $@
 
 $(service_DATA): $(service_in_files)
-	@sed -e "s|\@libexecdir\@|$(libexecdir)|" $< > $@
+	@sed -e "s|\@LIBEXECDIR\@|$(LIBEXECDIR)|" $< > $@
 
 install:
 	$(INSTALL)    -m755 $(exec_DATA)       $(DESTDIR)$(LIBEXECDIR)/telepathy-eri
 	$(INSTALL)    -m644 $(service_DATA)    $(DESTDIR)$(DBUS_SERVICES_DIR)/org.freedesktop.Telepathy.ConnectionManager.eri.service
 	$(INSTALL)    -m644 $(manager_DATA)    $(DESTDIR)$(MANAGERS_DIR)/eri.manager
 # installing req
-	$(INSTALL) -d -m755                    $(DESTDIR)$(datadir)/telepathy-eri/
-	$(INSTALL) -d -m755                    $(DESTDIR)$(datadir)/telepathy-eri/tp/
-	$(INSTALL) -d -m755                    $(DESTDIR)$(datadir)/telepathy-eri/tp/vk/
-	$(INSTALL) -d -m755                    $(DESTDIR)$(datadir)/telepathy-eri/tp/channel/
-	$(INSTALL)    -m644 $(tp_DATA)         $(DESTDIR)$(datadir)/telepathy-eri/tp/
-	$(INSTALL)    -m644 $(tp_vk_DATA)      $(DESTDIR)$(datadir)/telepathy-eri/tp/vk/
-	$(INSTALL)    -m644 $(tp_channel_DATA) $(DESTDIR)$(datadir)/telepathy-eri/tp/channel/
-	$(INSTALL) -d -m755                    $(DESTDIR)$(datadir)/telepathy-eri/vkcom/
-	$(INSTALL)    -m644 $(vk_DATA)         $(DESTDIR)$(datadir)/telepathy-eri/vkcom/
-	$(INSTALL) -d -m755                    $(DESTDIR)$(datadir)/telepathy-eri/telepathy/
-	$(INSTALL) -d -m755                    $(DESTDIR)$(datadir)/telepathy-eri/telepathy/server/
-	$(INSTALL) -d -m755                    $(DESTDIR)$(datadir)/telepathy-eri/telepathy/client/
-	$(INSTALL) -d -m755                    $(DESTDIR)$(datadir)/telepathy-eri/telepathy/_generated/
-	$(INSTALL)    -m644 $(tlp_DATA)        $(DESTDIR)$(datadir)/telepathy-eri/telepathy/
-	$(INSTALL)    -m644 $(tlp_server_DATA) $(DESTDIR)$(datadir)/telepathy-eri/telepathy/server/
-	$(INSTALL)    -m644 $(tlp_client_DATA) $(DESTDIR)$(datadir)/telepathy-eri/telepathy/client/
-	$(INSTALL)    -m644 $(tlp_gen_DATA)    $(DESTDIR)$(datadir)/telepathy-eri/telepathy/_generated/
-	$(INSTALL) -d -m755                    $(DESTDIR)$(datadir)/telepathy-eri/utils/
-	$(INSTALL)    -m644 $(utils_DATA)      $(DESTDIR)$(datadir)/telepathy-eri/utils/
+	$(INSTALL) -d -m755                    $(DESTDIR)$(DATADIR)/tp/vk/
+	$(INSTALL) -d -m755                    $(DESTDIR)$(DATADIR)/tp/channel/
+	$(INSTALL)    -m644 $(tp_DATA)         $(DESTDIR)$(DATADIR)/tp/
+	$(INSTALL)    -m644 $(tp_vk_DATA)      $(DESTDIR)$(DATADIR)/tp/vk/
+	$(INSTALL)    -m644 $(tp_channel_DATA) $(DESTDIR)$(DATADIR)/tp/channel/
+	$(INSTALL) -d -m755                    $(DESTDIR)$(DATADIR)/vkcom/
+	$(INSTALL)    -m644 $(vk_DATA)         $(DESTDIR)$(DATADIR)/vkcom/
+	$(INSTALL) -d -m755                    $(DESTDIR)$(DATADIR)/telepathy/server/
+	$(INSTALL) -d -m755                    $(DESTDIR)$(DATADIR)/telepathy/client/
+	$(INSTALL) -d -m755                    $(DESTDIR)$(DATADIR)/telepathy/_generated/
+	$(INSTALL)    -m644 $(tlp_DATA)        $(DESTDIR)$(DATADIR)/telepathy/
+	$(INSTALL)    -m644 $(tlp_server_DATA) $(DESTDIR)$(DATADIR)/telepathy/server/
+	$(INSTALL)    -m644 $(tlp_client_DATA) $(DESTDIR)$(DATADIR)/telepathy/client/
+	$(INSTALL)    -m644 $(tlp_gen_DATA)    $(DESTDIR)$(DATADIR)/telepathy/_generated/
+	$(INSTALL) -d -m755                    $(DESTDIR)$(DATADIR)/utils/
+	$(INSTALL)    -m644 $(utils_DATA)      $(DESTDIR)$(DATADIR)/utils/
 
 clean:
 	$(RM)               $(service_DATA)
@@ -85,4 +83,4 @@ uninstall:
 	$(RM)               $(DESTDIR)$(LIBEXECDIR)/telepathy-eri
 	$(RM)               $(DESTDIR)$(DBUS_SERVICES_DIR)/org.freedesktop.Telepathy.ConnectionManager.eri.service
 	$(RM)               $(DESTDIR)$(DESTDIR)$(MANAGERS_DIR)/eri.manager
-	$(RM)               $(DESTDIR)$(datadir)/telepathy-eri/
+	$(RM)               $(DESTDIR)$(DATADIR)/telepathy-eri/

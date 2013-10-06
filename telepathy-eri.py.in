@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 import sys
-sys.path.insert(1, "@datadir@/telepathy-eri")
+sys.path.insert(1, "@DATADIR@/telepathy-eri")
 
 # IMPORTANT! makes asynchronous dbus things work
 from dbus.mainloop.glib import DBusGMainLoop, threads_init
@@ -58,7 +58,7 @@ if __name__ == "__main__":
        libc = ctypes.CDLL('libc.so.6')
        libc.prctl(15, 'telepathy-'+constants.PROGRAM, 0, 0, 0)
     except Exception, e:
-       logger.warning('Unable to set processName: %s" % e')
+       logger.warning('Unable to set process Name: %s" % e')
 
 
     threads_init()
