@@ -186,7 +186,7 @@ class vkTextChannel(
     def _send_text_message(self, to, text, plain = True):
         logger.debug(text)
         if plain:
-            text = text.replace('<', '&#60')
+            text = text.replace('<', '&#60;')
         return self._conn.send_text(to,text)
 
     @loggit(logger)
