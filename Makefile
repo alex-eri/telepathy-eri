@@ -79,7 +79,7 @@ install:
 clean:
 	$(RM)               $(service_DATA)
 	$(RM)               $(exec_DATA)
-	@git submodule deinit .
+	@git submodule deinit  -f .
 
 uninstall:
 	$(RM)               $(DESTDIR)$(LIBEXECDIR)/telepathy-eri
