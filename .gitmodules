@@ -1,0 +1,3 @@
+[submodule "telepathy-python"]
+	path = telepathy-python
+	url = https://github.com/max-posedon/telepathy-python.git
