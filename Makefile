@@ -36,7 +36,7 @@ utils_DATA = utils/*.py
 all: submodule $(exec_DATA) $(service_DATA)
 
 submodule:
-	git submodule update --init
+	@git submodule update --init
 	@bash -c " \
             pushd telepathy-python/; \
             make distclean; \
@@ -78,7 +78,7 @@ install:
 clean:
 	$(RM)               $(service_DATA)
 	$(RM)               $(exec_DATA)
-	$(RM)               $(tp_py)
+	@git submodule deinit .
 
 uninstall:
 	$(RM)               $(DESTDIR)$(LIBEXECDIR)/telepathy-eri
