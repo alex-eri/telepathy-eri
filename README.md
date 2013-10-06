@@ -22,8 +22,9 @@ $ make
 How to use
 ----------
 
-1. Open empathy/gnome-online-accounts
-2. Add vk account
+1. /usr/libexec/telepathy-eri
+2. Open empathy/gnome-online-accounts
+3. Add vk account
 
 How to remove
 -------------
