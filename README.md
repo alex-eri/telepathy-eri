@@ -11,6 +11,11 @@ Requirements
 * automake
 * libxslt
 
+Optional requirements
+------------
+
+* python-lxml # convert html entities
+
 How to install
 --------------
 
@@ -33,7 +38,7 @@ How to remove
 # make uninstall
 ```
 
-Some bubuntu-specific notes
+Some ubuntu-specific notes
 ---------------------------
 
 For 12.10+ bubuntus copy files from accounts/* to /usr/share/accounts
@@ -47,8 +52,10 @@ Open link: https://oauth.vk.com/authorize?client_id=3821026&scope=friends,messag
 
 In response you will have redirect and in address-string you will have alike:
 ```
-#access_token=[THIS]&expires_in=0&user_id=136195746
+#access_token=[THIS]&expires_in=0&user_id=1361145746
 ```
 
 1. Open additional settings
 2. Into Token-parameter enter "THIS"
+
+Connection manager prefer token if it set.
