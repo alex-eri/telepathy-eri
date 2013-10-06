@@ -28,7 +28,7 @@ How to use
 ----------
 
 1. /usr/libexec/telepathy-eri
-2. Open empathy/gnome-online-accounts
+2. Open empathy-accounts or gnome-online-accounts
 3. Add vk account
 
 How to remove
@@ -41,7 +41,7 @@ How to remove
 Some ubuntu-specific notes
 ---------------------------
 
-For 12.10+ bubuntus copy files from accounts/* to /usr/share/accounts
+For 12.10+ bubuntus copy files from accounts/* to /usr/share/accounts in order to use with online-accounts
 
 Token authorize
 ---------------
