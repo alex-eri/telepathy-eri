@@ -6,6 +6,8 @@ from telepathy._generated.Connection_Interface_Contact_Info import ConnectionInt
 from telepathy._generated.Connection_Interface_Contact_List import ConnectionInterfaceContactList
 from telepathy._generated.Connection_Interface_Contacts import ConnectionInterfaceContacts
 from utils.decorators import loggit
+from utils.text import escape_as_dbus_path
+import vkcom
 
 __author__ = 'eri'
 #!/usr/bin/python
@@ -45,26 +47,23 @@ class vkConnection(Connection,
 
         self.parameters = parameters
 
-        self.Login()
+
 
         self.alias_is_screen_name = parameters.get('alias is screen_name')
-        self.contact_list = ContactList(self.Api.users,fields='nickname,screen_name,photo_50,online')
 
-        contact = self.contact_list.get(None)
+        #contact = self.contact_list.get(None)
 
-        self.account = str(contact.get('id'))
+        account = escape_as_dbus_path(parameters.get('account','vkconnection') )# str(contact.get('id'))
 
         # create a new channel manager and tell it we're it's connection
         self._channel_manager = vkChannelManager(self)
 
-        Connection.__init__(self, PROTOCOL, self.account, PROGRAM)
+        Connection.__init__(self, PROTOCOL, account, PROGRAM)
         ConnectionInterfaceRequests.__init__(self)
         vkContacts.__init__(self)
 
-        self._self_handle = self.ensure_contact_handle(contact)
 
-        self.create_handle(telepathy.HANDLE_TYPE_LIST, 'subscribe')
-        self.create_handle(telepathy.HANDLE_TYPE_LIST, 'publish')
+
         #     Handle(
         #     self.get_handle_id(), telepathy.HANDLE_TYPE_CONTACT,
         #     parameters['account'])
@@ -82,12 +81,19 @@ class vkConnection(Connection,
         self._handles[type, id] = handle
         return handle
 
+    @loggit(logger)
     def Login(self):
         if self.parameters.get('token') and self.parameters['token'] != 'password':
             self.login(token=self.parameters['token'])
         else:
             self.login(username=self.parameters['account'],password=self.parameters['password'])
 
+        self.contact_list = ContactList(self.Api.users,fields='nickname,screen_name,photo_50,online')
+        contact = self.contact_list.get(None)
+        self._self_handle = self.ensure_contact_handle(contact)
+
+        self.create_handle(telepathy.HANDLE_TYPE_LIST, 'subscribe')
+        self.create_handle(telepathy.HANDLE_TYPE_LIST, 'publish')
 
 
     def _generate_props(self, channel_type, handle, suppress_handler, initiator_handle=None):
@@ -133,17 +139,23 @@ class vkConnection(Connection,
 
 
     def Connect(self):
+        self.StatusChanged(telepathy.CONNECTION_STATUS_CONNECTING,telepathy.CONNECTION_STATUS_REASON_REQUESTED)
         try:
+            self.Login()
             self.connect()
-            # self.populate()
-        except Exception,e:
-            logger.error(e.message)
-        self.StatusChanged(telepathy.CONNECTION_STATUS_CONNECTED,
-            telepathy.CONNECTION_STATUS_REASON_REQUESTED)
 
-        if self._download_at_connection:
-        # if True:
-            self.Download()
+        except vkcom.AuthError, e:
+            logger.warning(e.message)
+            self.StatusChanged(telepathy.CONNECTION_STATUS_DISCONNECTED,telepathy.CONNECTION_STATUS_REASON_AUTHENTICATION_FAILED)
+        except vkcom.APIError,e:
+            logger.warning(e.message)
+            self.StatusChanged(telepathy.CONNECTION_STATUS_DISCONNECTED,telepathy.CONNECTION_STATUS_REASON_NETWORK_ERROR)
+        else:
+            self.StatusChanged(telepathy.CONNECTION_STATUS_CONNECTED, telepathy.CONNECTION_STATUS_REASON_REQUESTED)
+
+            if self._download_at_connection:
+            # if True:
+                self.Download()
 
     def Disconnect(self):
         self.disconnect()
