@@ -183,10 +183,10 @@ class vkTextChannel(
         return dbus.String(message_id)
 
 
-    def _send_text_message(self, to, text,plain=True):
+    def _send_text_message(self, to, text, plain = True):
         logger.debug(text)
         if plain:
-            text=text.replace('<','&lt;')
+            text = text.replace('<', '&#60')
         return self._conn.send_text(to,text)
 
     @loggit(logger)
