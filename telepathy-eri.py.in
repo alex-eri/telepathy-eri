@@ -32,7 +32,7 @@ import telepathy.server
 
 
 class Debug(telepathy.server.Debug):
-    """Butterfly debug interface
+    """Eri debug interface
 
     Implements the org.freedesktop.Telepathy.Debug interface"""
 
