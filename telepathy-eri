@@ -8,9 +8,6 @@ DBusGMainLoop(set_as_default=True)
 # so that dbus (telepathy) can use it
 import gobject
 
-
-
-
 import logging,os
 #import logging.handlers
 
