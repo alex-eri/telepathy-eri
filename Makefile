@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 prefix = /usr
-LIBEXECDIR = $(prefix)/libexec
+libexecdir = $(prefix)/libexec
 datadir = $(prefix)/share
 DBUS_SERVICES_DIR = $(datadir)/dbus-1/services
 MANAGERS_DIR = $(datadir)/telepathy/managers
@@ -79,7 +79,7 @@ install:
 clean:
 	$(RM)               $(service_DATA)
 	$(RM)               $(exec_DATA)
-	@git submodule deinit  -f .
+	@git submodule deinit -f .
 
 uninstall:
 	$(RM)               $(DESTDIR)$(LIBEXECDIR)/telepathy-eri
