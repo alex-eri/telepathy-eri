@@ -135,7 +135,17 @@ class vkConnection(Connection,
             channel = self._channel_manager.channel_for_props(props,signal=True)
             channel.message_received(message_id,uid,timestamp,title,text,attachments)
 
+    def typing(self,user_id,flags):
 
+        logger.debug('received'+str((user_id,flags)))
+
+        handle = self.ensure_contact_handle(user_id)
+        props = self._generate_props(telepathy.CHANNEL_TYPE_TEXT,
+                handle, False, handle)
+        channel = self._channel_manager.existing_channel(props)
+        if channel:
+            channel.ChatStateChanged(handle.id,telepathy.CHANNEL_CHAT_STATE_COMPOSING)
+            gobject.timeout_add(5000,channel.ChatStateChanged,handle.id,telepathy.CHANNEL_CHAT_STATE_PAUSED)
 
 
     def Connect(self):

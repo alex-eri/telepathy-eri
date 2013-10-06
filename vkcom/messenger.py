@@ -141,6 +141,8 @@ class VkMessenger(object):
             self.friend_offline(-update[1])
         elif code == 8:
             self.friend_online(-update[1])
+        elif code == 61:
+            self.typing(update[1],update[2])
 
 
     def incoming_message(self,message_id,uid,timestamp,title,text,attachments=None):
