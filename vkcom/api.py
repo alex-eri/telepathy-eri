@@ -211,8 +211,10 @@ class API(Method):
             uri = resp.geturl()
             if uri.find('access_token') > 1:
                 return self._link(uri)
+            else:
+                raise AuthError({'error':'unexpected url','error_description':uri})
 
-        logger.error(uri)
+
         pass
 
     def login(self, link=None, access_token=None, user_id=None, expires_in=None, username=None, password=None, **kwargs):
