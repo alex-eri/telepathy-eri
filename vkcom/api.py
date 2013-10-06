@@ -63,7 +63,7 @@ class Method(object):
 
     def call(self, method, **kwargs):
         """
-        https://api.vkontakte.ru/method/METHOD_NAME?PARAMETERS&access_token=ACCESS_TOKEN
+        https://api.vk.com/method/METHOD_NAME?PARAMETERS&access_token=ACCESS_TOKEN
         """
         logger.info(method)
         if not method:
