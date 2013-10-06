@@ -106,7 +106,7 @@ class vkConnection(Connection,
             props = self._generate_props(telepathy.CHANNEL_TYPE_TEXT,
                 handle, False, handle)
 
-            channel = self._channel_manager.channel_for_props(props,signal=True)
+            channel = self._channel_manager.channel_for_props(props,signal=False)
             channel.message_sent(message_id,uid,timestamp,title,text,attachments)
 
 
