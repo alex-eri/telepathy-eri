@@ -1,6 +1,8 @@
 telepathy-eri
 =============
 
+VK Connection Manager for Telepathy.
+
 Requirements
 ------------
 
