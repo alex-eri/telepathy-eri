@@ -2,6 +2,8 @@ import urllib
 
 __author__ = 'eri'
 
+from decorators import logger
+
 try:
 
     import lxml.html
@@ -12,7 +14,8 @@ try:
         try:
             dom = lxml.html.fromstring(t)
             t = dom.text_content()
-        except lxml.etree.XMLSyntaxError:
+        except lxml.etree.XMLSyntaxError as e:
+            logger.warning(e.message)
             pass
 
         return t
