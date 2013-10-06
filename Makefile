@@ -31,6 +31,8 @@ tlp_server_DATA = $(tp_py)/src/server/*.py
 tlp_client_DATA = $(tp_py)/src/client/*.py
 tlp_gen_DATA = $(tp_py)/src/_generated/*.py
 
+utils_DATA = utils/*.py
+
 all: submodule $(exec_DATA) $(service_DATA)
 
 submodule:
@@ -70,6 +72,8 @@ install:
 	$(INSTALL)    -m644 $(tlp_server_DATA) $(DESTDIR)$(datadir)/telepathy-eri/telepathy/server/
 	$(INSTALL)    -m644 $(tlp_client_DATA) $(DESTDIR)$(datadir)/telepathy-eri/telepathy/client/
 	$(INSTALL)    -m644 $(tlp_gen_DATA)    $(DESTDIR)$(datadir)/telepathy-eri/telepathy/_generated/
+	$(INSTALL) -d -m755                    $(DESTDIR)$(datadir)/telepathy-eri/utils/
+	$(INSTALL)    -m644 $(utils_DATA)      $(DESTDIR)$(datadir)/telepathy-eri/utils/
 
 clean:
 	$(RM)               $(service_DATA)
