@@ -39,6 +39,7 @@ submodule:
 	@git submodule update --init
 	@bash -c " \
             pushd telepathy-python/; \
+            git am ../0001-fix-pending-messages.patch; \
             make distclean; \
             ./autogen.sh; \
             make; \
