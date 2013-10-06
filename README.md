@@ -43,7 +43,7 @@ Token authorize
 
 At adding account use wrong password.
 
-Open link: https://oauth.vk.com/authorize?client_id=2692017&scope=friends,messages,offline&redirect_uri=https://oauth.vk.com/blank.html&v=5.0&response_type=token
+Open link: https://oauth.vk.com/authorize?client_id=3821026&scope=friends,messages,offline&redirect_uri=https://oauth.vk.com/blank.html&v=5.0&response_type=token
 
 In response you will have redirect and in address-string you will have alike:
 ```
