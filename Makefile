@@ -48,7 +48,7 @@ $(exec_DATA): $(exec_in_files)
 $(service_DATA): $(service_in_files)
 	@sed -e "s|\@libexecdir\@|$(libexecdir)|" $< > $@
 
-install: all
+install:
 	$(INSTALL)    -m755 $(exec_DATA)       $(DESTDIR)$(LIBEXECDIR)/telepathy-eri
 	$(INSTALL)    -m644 $(service_DATA)    $(DESTDIR)$(DBUS_SERVICES_DIR)/org.freedesktop.Telepathy.ConnectionManager.eri.service
 	$(INSTALL)    -m644 $(manager_DATA)    $(DESTDIR)$(MANAGERS_DIR)/eri.manager
