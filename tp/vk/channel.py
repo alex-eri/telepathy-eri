@@ -233,6 +233,7 @@ class vkTextChannel(
 
     def send_typing_notification(self):
         logger.debug('typing')
+        self._conn.Api.messages.setActivity(user_id=self._handle.name, type='typing')
 
     @loggit(logger)
     def AcknowledgePendingMessages(self, ids):
