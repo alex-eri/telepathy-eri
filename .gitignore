@@ -1,3 +1,4 @@
 *.pyc
 data/org.freedesktop.Telepathy.ConnectionManager.eri.service
 telepathy-eri.py
+.idea/
