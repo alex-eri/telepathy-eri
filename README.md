@@ -10,11 +10,7 @@ Requirements
 * make
 * automake
 * libxslt
-
-Optional requirements
-------------
-
-* python-lxml # convert html entities
+* python-lxml
 
 How to install
 --------------
