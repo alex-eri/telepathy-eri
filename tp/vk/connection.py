@@ -145,7 +145,7 @@ class vkConnection(Connection,
         channel = self._channel_manager.existing_channel(props)
         if channel:
             channel.ChatStateChanged(handle.id,telepathy.CHANNEL_CHAT_STATE_COMPOSING)
-            gobject.timeout_add(5000,channel.ChatStateChanged,handle.id,telepathy.CHANNEL_CHAT_STATE_PAUSED)
+            gobject.timeout_add_seconds(5,channel.ChatStateChanged,handle.id,telepathy.CHANNEL_CHAT_STATE_PAUSED)
 
 
     def Connect(self):
