@@ -9,7 +9,7 @@ Homepage: https://github.com/alex-eri/telepathy-eri/wiki
 #Vcs-Browser: http://git.debian.org/?p=collab-maint/telepathy-eri.git;a=summary
 
 Package: telepathy-eri
-Architecture: any
+Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: A VK connection manager for Telepathy
  Chat for vk.com
