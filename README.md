@@ -3,14 +3,20 @@ telepathy-eri
 
 VK Connection Manager for Telepathy.
 
-Requirements
+Run requirements
 ------------
 
 * python-mechanize
+* python-lxml
+
+Build requirements
+------------
+
 * make
 * automake
 * libxslt
-* python-lxml
+* xsltproc
+* libtool
 
 How to install
 --------------
