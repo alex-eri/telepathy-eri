@@ -4,9 +4,9 @@
 # Contributor: Samuel Mendes <heka.lok@gmail.com>
 
 pkgname=telepathy-eri
-pkgdesc="An VK connection manager for Telepathy"
+pkgdesc="A VK connection manager for Telepathy"
 pkgrel=1
-pkgver=77.b45cd0e
+pkgver=79
 arch=('any')
 url="https://github.com/alex-eri/telepathy-eri/"
 groups=('telepathy')

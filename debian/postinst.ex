@@ -20,6 +20,7 @@ set -e
 
 case "$1" in
     configure)
+        killall -HUP dbus-daemon 2>&1
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
